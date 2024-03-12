@@ -25,16 +25,18 @@ function Stopwatch() {
     };
 
     const formatTime = (time) => {
+       
+        const minutes = Math.floor(time / (1000 * 60));
         const seconds = Math.floor((time % (1000 * 60)) / 1000);
-        const milliseconds = Math.floor((time % 1000) / 10);
 
-        return `${seconds.toString().padStart(1, '0')}:${milliseconds.toString().padStart(2, '0')}`;
+        return `${minutes.toString().padStart(1, '0')}:${seconds.toString().padStart(2, '0')}`;
     };
 
     return (
         <div>
             <h1>Stopwatch</h1>
-            <div>Time:{formatTime(elapsedTime)}</div>
+            <div>Time: {formatTime(elapsedTime)}</div>
+            <br/>
             <button onClick={handleStartStop}>{isRunning ? 'Stop' : 'Start'}</button>
             <button onClick={handleReset}>Reset</button>
         </div>
